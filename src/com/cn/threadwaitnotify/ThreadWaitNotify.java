@@ -11,7 +11,7 @@ class Zy {
     //加1
     public synchronized void increment() throws Exception {
         if (number != 0) {
-            this.wait();
+            this.wait();//只当前等待
         }
         number++;
         System.out.println("线程：" + Thread.currentThread().getName() + "加+1之后：" + number);
@@ -36,6 +36,7 @@ public class ThreadWaitNotify {
         Thread t1 = new Thread(() -> {
             try {
                 for (int i = 0; i < 10; i++) {
+                    Thread.sleep(200);
                     zy.increment();
                 }
             } catch (Exception e) {
@@ -46,6 +47,7 @@ public class ThreadWaitNotify {
         Thread t2 = new Thread(() -> {
             try {
                 for (int i = 0; i < 10; i++) {
+                    Thread.sleep(200);
                     zy.decrement();
                 }
 
@@ -57,6 +59,7 @@ public class ThreadWaitNotify {
         Thread t1_ = new Thread(() -> {
             try {
                 for (int i = 0; i < 10; i++) {
+                    Thread.sleep(200);
                     zy.increment();
                 }
             } catch (Exception e) {
@@ -67,6 +70,7 @@ public class ThreadWaitNotify {
         Thread t2_ = new Thread(() -> {
             try {
                 for (int i = 0; i < 10; i++) {
+                    Thread.sleep(200);
                     zy.decrement();
                 }
 
