@@ -8,21 +8,18 @@ import java.util.concurrent.TimeUnit;
 class Phone {
     public Object lock = new Object();
 
-    public void send1() {
-        synchronized (lock) {
+    public static synchronized void send1() {
+        System.out.println("发送邮件.");
             try {
                 TimeUnit.SECONDS.sleep(4);//睡4秒
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             System.out.println("发送邮件");
-        }
     }
 
-    public void send2() {
-        synchronized (lock) {
+    public static synchronized void send2() {
             System.out.println("发送短信");
-        }
     }
 }
 
@@ -36,14 +33,14 @@ public class LockInfo {
         }, "线程1").start();
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         new Thread(() ->
         {
-            phone1.send2();
+            phone2.send2();
         }, "线程2").start();
     }
 
