@@ -10,8 +10,11 @@ class Zy {
 
     //加1
     public synchronized void increment() throws Exception {
-        if (number != 0) {
+        /*if (number != 0) {
             this.wait();//只当前等待
+        }*/
+        while (number != 0) {
+            this.wait();
         }
         number++;
         System.out.println("线程：" + Thread.currentThread().getName() + "加+1之后：" + number);
@@ -20,7 +23,10 @@ class Zy {
 
     //减1
     public synchronized void decrement() throws Exception {
-        if (number == 0) {
+       /* if (number == 0) {
+            this.wait();
+        }*/
+        while (number == 0) {
             this.wait();
         }
         number--;
