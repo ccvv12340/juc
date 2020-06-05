@@ -37,7 +37,7 @@ class Zy1 {
             this.wait();
         }
         for (int i = 0; i < 5; i++) {
-            System.out.println("BB");
+            System.out.println("CC");
         }
         number = number-2;
         System.out.println("c number"+number);
