@@ -5,10 +5,10 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 高内聚自身 -- 等待判断 -- 干活-- 通知--标志位.
+ * 高内聚自身 -- 等待判断 -- 干活-- 通知--标志位.（精准）
  * 多线程之间 ，按照顺序调用，实现 A->B->C 线程启动，要求如下：
  * <p>
- * AA打印5次 BB打印10次 CC打印15 次 。。。来10轮
+ * AA打印5次 BB打印5次 CC打印5 次 。。。来10轮
  */
 class Zy_ {
     private int number = 0;
